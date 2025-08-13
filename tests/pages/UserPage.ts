@@ -7,12 +7,14 @@ export class UserPage extends BasePage {
   readonly createBtn: Locator;
   readonly heading: Locator;
   readonly sidebar: SidebarMenu;
+  readonly delBtn: Locator;
 
   constructor(page: Page) {
     super(page, "/#/users");
     this.createBtn = this.page.getByRole("link", { name: "Create" });
     this.heading = this.page.getByRole("heading", { name: "Users" });
     this.sidebar = new SidebarMenu(page);
+    this.delBtn = this.page.getByRole("button", { name: "Delete" });
   }
 
   async clickCreateBtn() {
@@ -34,5 +36,9 @@ export class UserPage extends BasePage {
 
   getTableCell(rowIndex: number, cellIndex: number): Locator {
     return this.page.getByRole("rowgroup").nth(1).getByRole("row").nth(rowIndex).getByRole("cell").nth(cellIndex);
+  }
+
+  async deleteSelected() {
+    await this.delBtn.click();
   }
 }

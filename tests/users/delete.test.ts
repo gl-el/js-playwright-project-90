@@ -18,4 +18,21 @@ test.describe("delete users", () => {
     await editPage.deleteUser();
     await expect(userPage.getRowByEmail(email)).not.toBeVisible();
   });
+
+  test("should delete multiple users", async ({ page }) => {
+    const userPage = new UserPage(page);
+
+    await userPage.goto();
+    await expect(userPage.heading).toBeVisible();
+
+    const firstUserEmail = await userPage.getTableCell(0, 2).textContent();
+    const secondUserEmail = await userPage.getTableCell(1, 2).textContent();
+
+    await userPage.getRowByEmail(firstUserEmail).getByRole("checkbox").check();
+    await userPage.getRowByEmail(secondUserEmail).getByRole("checkbox").check();
+
+    await userPage.deleteSelected();
+    await expect(userPage.getRowByEmail(firstUserEmail)).not.toBeVisible();
+    await expect(userPage.getRowByEmail(secondUserEmail)).not.toBeVisible();
+  });
 });
