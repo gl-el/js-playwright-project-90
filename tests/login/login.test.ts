@@ -1,6 +1,7 @@
 import { expect, test } from "@playwright/test";
 import { LoginPage } from "../pages/LoginPage";
 import { DashboardPage } from "../pages/DashboardPage";
+import { USER } from "../testData/user";
 
 test.describe("authorization", () => {
   test("should login", async ({ browser }) => {
@@ -15,7 +16,7 @@ test.describe("authorization", () => {
     await expect(loginPage.passInput).toBeVisible();
     await expect(loginPage.signInBtn).toBeVisible();
 
-    await loginPage.login("user", "password123");
+    await loginPage.login(USER.username, USER.password);
 
     await expect(dashboardPage.heading).toBeVisible();
   });

@@ -1,4 +1,4 @@
-import { expect, Locator, Page } from "@playwright/test";
+import { Locator, Page } from "@playwright/test";
 
 export class LoginPage {
   readonly loginInput: Locator;
@@ -14,12 +14,6 @@ export class LoginPage {
 
   async goto() {
     await this.page.goto("/");
-  }
-
-  async isVisible() {
-    await expect(this.loginInput).toBeVisible();
-    await expect(this.passInput).toBeVisible();
-    await expect(this.signInBtn).toBeVisible();
   }
 
   async login(username: string, password: string) {
