@@ -10,6 +10,7 @@ export class CreateEditPage extends BasePage {
   readonly name: Locator;
   readonly surname: Locator;
   readonly sidebar: SidebarMenu;
+  readonly delBtn: Locator;
 
   constructor(page: Page) {
     super(page, "/#/users");
@@ -18,6 +19,7 @@ export class CreateEditPage extends BasePage {
     this.name = this.page.getByLabel("First Name");
     this.surname = this.page.getByLabel("Last Name");
     this.saveBtn = this.page.getByRole("button", { name: "Save" });
+    this.delBtn = this.page.getByRole("button", { name: "Delete" });
 
     this.sidebar = new SidebarMenu(page);
   }
@@ -27,5 +29,9 @@ export class CreateEditPage extends BasePage {
     await this.name.fill(name);
     await this.surname.fill(surname);
     await this.saveBtn.click();
+  }
+
+  async deleteUser() {
+    await this.delBtn.click();
   }
 }
