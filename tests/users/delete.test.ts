@@ -35,4 +35,15 @@ test.describe("delete users", () => {
     await expect(userPage.getRowByEmail(firstUserEmail)).not.toBeVisible();
     await expect(userPage.getRowByEmail(secondUserEmail)).not.toBeVisible();
   });
+
+  test("should mass delete users", async ({ page }) => {
+    const userPage = new UserPage(page);
+    await userPage.goto();
+    await expect(userPage.heading).toBeVisible();
+
+    await userPage.selectAll();
+    await userPage.deleteSelected();
+
+    await expect(userPage.emptyText).toBeVisible();
+  });
 });

@@ -8,6 +8,8 @@ export class UserPage extends BasePage {
   readonly heading: Locator;
   readonly sidebar: SidebarMenu;
   readonly delBtn: Locator;
+  readonly selectAllCheck: Locator;
+  readonly emptyText: Locator;
 
   constructor(page: Page) {
     super(page, "/#/users");
@@ -15,6 +17,8 @@ export class UserPage extends BasePage {
     this.heading = this.page.getByRole("heading", { name: "Users" });
     this.sidebar = new SidebarMenu(page);
     this.delBtn = this.page.getByRole("button", { name: "Delete" });
+    this.selectAllCheck = this.page.getByRole("checkbox", { name: "Select all" });
+    this.emptyText = this.page.getByText("No Users yet.");
   }
 
   async clickCreateBtn() {
@@ -36,6 +40,10 @@ export class UserPage extends BasePage {
 
   getTableCell(rowIndex: number, cellIndex: number): Locator {
     return this.page.getByRole("rowgroup").nth(1).getByRole("row").nth(rowIndex).getByRole("cell").nth(cellIndex);
+  }
+
+  async selectAll() {
+    await this.selectAllCheck.check();
   }
 
   async deleteSelected() {
