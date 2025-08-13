@@ -1,6 +1,7 @@
 import { expect, Locator, Page } from "@playwright/test";
 import { SidebarMenu } from "./SidebarMenu";
 import { BasePage } from "./BasePage";
+import { IUserProps } from "../types";
 
 export class UserPage extends BasePage {
   readonly createBtn: Locator;
@@ -17,6 +18,14 @@ export class UserPage extends BasePage {
   async clickCreateBtn() {
     await this.createBtn.click();
     await expect(this.page.url()).toContain("/create");
+  }
+
+  getRowByUser({ name, surname, email }: IUserProps) {
+    return this.page
+      .getByRole("row")
+      .filter({ has: this.page.getByRole("cell", { name: name }) })
+      .filter({ has: this.page.getByRole("cell", { name: surname }) })
+      .filter({ has: this.page.getByRole("cell", { name: email }) });
   }
 
   getRowByEmail(email: string) {
