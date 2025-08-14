@@ -31,6 +31,11 @@ export class CreateEditPage extends BasePage {
     await this.saveBtn.click();
   }
 
+  async editEmail(email: string) {
+    await this.email.fill(email);
+    await this.saveBtn.click();
+  }
+
   async deleteUser() {
     await this.delBtn.click();
   }
