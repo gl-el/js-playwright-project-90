@@ -1,10 +1,10 @@
 import { expect, test } from "@playwright/test";
 import { UserPage } from "../pages/UserPage";
-import { CreateEditPage } from "../pages/CreatePage";
+import { CreateEditUserPage } from "../pages/CreateEditUserPage";
 
 test("should edit user", async ({ page }) => {
   const userPage = new UserPage(page);
-  const editPage = new CreateEditPage(page);
+  const editPage = new CreateEditUserPage(page);
 
   await userPage.goto();
   await expect(userPage.heading).toBeVisible();

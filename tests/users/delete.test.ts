@@ -1,11 +1,11 @@
 import { expect, test } from "@playwright/test";
 import { UserPage } from "../pages/UserPage";
-import { CreateEditPage } from "../pages/CreatePage";
+import { CreateEditUserPage } from "../pages/CreateEditUserPage";
 
 test.describe("delete users", () => {
   test("should delete one user", async ({ page }) => {
     const userPage = new UserPage(page);
-    const editPage = new CreateEditPage(page);
+    const editPage = new CreateEditUserPage(page);
 
     await userPage.goto();
     await expect(userPage.heading).toBeVisible();

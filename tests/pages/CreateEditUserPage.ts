@@ -3,7 +3,7 @@ import { SidebarMenu } from "./SidebarMenu";
 import { BasePage } from "./BasePage";
 import { IUserProps } from "../types";
 
-export class CreateEditPage extends BasePage {
+export class CreateEditUserPage extends BasePage {
   readonly saveBtn: Locator;
   readonly heading: Locator;
   readonly email: Locator;

@@ -1,11 +1,11 @@
 import { expect, test } from "@playwright/test";
 import { UserPage } from "../pages/UserPage";
-import { CreateEditPage } from "../pages/CreatePage";
+import { CreateEditUserPage } from "../pages/CreateEditUserPage";
 import { NEW_USER } from "../testData/newUser";
 
 test("should create a new user", async ({ page }) => {
   const userPage = new UserPage(page);
-  const createPage = new CreateEditPage(page);
+  const createPage = new CreateEditUserPage(page);
 
   await userPage.goto();
   await userPage.clickCreateBtn();
