@@ -1,16 +1,12 @@
 import { Locator, Page } from "@playwright/test";
-import { SidebarMenu } from "./SidebarMenu";
-import { BasePage } from "./BasePage";
+import { BaseCreateEditPage } from "./BasePages";
 import { IUserProps } from "../types";
 
-export class CreateEditUserPage extends BasePage {
-  readonly saveBtn: Locator;
+export class CreateEditUserPage extends BaseCreateEditPage {
   readonly heading: Locator;
   readonly email: Locator;
   readonly name: Locator;
   readonly surname: Locator;
-  readonly sidebar: SidebarMenu;
-  readonly delBtn: Locator;
 
   constructor(page: Page) {
     super(page, "/#/users");
@@ -18,10 +14,6 @@ export class CreateEditUserPage extends BasePage {
     this.email = this.page.getByLabel("Email");
     this.name = this.page.getByLabel("First Name");
     this.surname = this.page.getByLabel("Last Name");
-    this.saveBtn = this.page.getByRole("button", { name: "Save" });
-    this.delBtn = this.page.getByRole("button", { name: "Delete" });
-
-    this.sidebar = new SidebarMenu(page);
   }
 
   async saveUser({ email, name, surname }: IUserProps) {
