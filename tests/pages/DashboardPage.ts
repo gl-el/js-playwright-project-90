@@ -1,4 +1,4 @@
-import { expect, Locator, Page } from "@playwright/test";
+import { expect, type Locator, type Page } from "@playwright/test";
 import { SidebarMenu, BasePage } from "./BasePages";
 
 export class DashboardPage extends BasePage {

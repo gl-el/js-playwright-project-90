@@ -1,6 +1,6 @@
 import { expect, test } from "@playwright/test";
-import { UserPage } from "../pages/UserPage";
-import { CreateEditUserPage } from "../pages/CreateEditUserPage";
+import { UserPage } from "@pages/UserPage";
+import { CreateEditUserPage } from "@pages/CreateEditUserPage";
 
 test.describe("delete users", () => {
   test("should delete one user", async ({ page }) => {
@@ -12,11 +12,12 @@ test.describe("delete users", () => {
 
     const emailCell = userPage.getTableCell(0, 2);
     const email = await emailCell.textContent();
+    expect(email, "Email must not be null").not.toBeNull();
 
     await emailCell.click();
-    await expect(editPage.heading).toContainText(email);
+    await expect(editPage.heading).toContainText(email as string);
     await editPage.deleteUser();
-    await expect(userPage.getRowByEmail(email)).not.toBeVisible();
+    await expect(userPage.getRowByEmail(email)).toBeHidden();
   });
 
   test("should delete multiple users", async ({ page }) => {
@@ -32,8 +33,8 @@ test.describe("delete users", () => {
     await userPage.getRowByEmail(secondUserEmail).getByRole("checkbox").check();
 
     await userPage.deleteSelected();
-    await expect(userPage.getRowByEmail(firstUserEmail)).not.toBeVisible();
-    await expect(userPage.getRowByEmail(secondUserEmail)).not.toBeVisible();
+    await expect(userPage.getRowByEmail(firstUserEmail)).toBeHidden();
+    await expect(userPage.getRowByEmail(secondUserEmail)).toBeHidden();
   });
 
   test("should mass delete users", async ({ page }) => {

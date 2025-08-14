@@ -1,6 +1,6 @@
-import { expect, Locator, Page } from "@playwright/test";
+import { expect, type Locator, type Page } from "@playwright/test";
 import { BaseTablePage } from "./BasePages";
-import { IUserProps } from "../types";
+import { type IUserProps } from "tests/types";
 
 export class UserPage extends BaseTablePage {
   readonly heading: Locator;
@@ -12,7 +12,7 @@ export class UserPage extends BaseTablePage {
 
   async clickCreateBtn() {
     await this.createBtn.click();
-    await expect(this.page.url()).toContain("/create");
+    expect(this.page.url()).toContain("/create");
   }
 
   getRowByUser({ name, surname, email }: IUserProps) {
@@ -23,7 +23,11 @@ export class UserPage extends BaseTablePage {
       .filter({ has: this.page.getByRole("cell", { name: email }) });
   }
 
-  getRowByEmail(email: string) {
+  getRowByEmail(email: string | null) {
+    if (!email) {
+      throw new Error(`getRowByEmail: email is ${email}`);
+    }
+
     return this.page.getByRole("row").filter({ has: this.page.getByRole("cell", { name: email }) });
   }
 }

@@ -1,6 +1,6 @@
 import { expect, test } from "@playwright/test";
-import { StatusesListPage } from "../pages/StatusesListPage";
-import { CreateEditStatusPage } from "../pages/CreateEditStatusPage";
+import { StatusesListPage } from "tests/pages/StatusesListPage";
+import { CreateEditStatusPage } from "tests/pages/CreateEditStatusPage";
 
 test.describe("delete statuses", () => {
   test("should delete one status", async ({ page }) => {
@@ -12,11 +12,12 @@ test.describe("delete statuses", () => {
 
     const nameCell = statusesListPage.getTableCell(0, 2);
     const name = await nameCell.textContent();
+    expect(name, "Name must not be null").not.toBeNull();
 
     await nameCell.click();
-    await expect(editPage.heading).toContainText(name);
+    await expect(editPage.heading).toContainText(name as string);
     await editPage.deleteStatus();
-    await expect(statusesListPage.getRowByName(name)).not.toBeVisible();
+    await expect(statusesListPage.getRowByName(name)).toBeHidden();
   });
 
   test("should delete multiple statuses", async ({ page }) => {
@@ -32,8 +33,8 @@ test.describe("delete statuses", () => {
     await statusesListPage.getRowByName(secondName).getByRole("checkbox").check();
 
     await statusesListPage.deleteSelected();
-    await expect(statusesListPage.getRowByName(firstName)).not.toBeVisible();
-    await expect(statusesListPage.getRowByName(firstName)).not.toBeVisible();
+    await expect(statusesListPage.getRowByName(firstName)).toBeHidden();
+    await expect(statusesListPage.getRowByName(firstName)).toBeHidden();
   });
 
   test("should mass delete statuses", async ({ page }) => {

@@ -1,8 +1,8 @@
 import { expect, test } from "@playwright/test";
-import { DashboardPage } from "./pages/DashboardPage";
-import { UserPage } from "./pages/UserPage";
-import { StatusesListPage } from "./pages/StatusesListPage";
-import { Menu } from "./enums";
+import { DashboardPage } from "@pages/DashboardPage";
+import { UserPage } from "@pages/UserPage";
+import { StatusesListPage } from "@pages/StatusesListPage";
+import { Menu } from "tests/enums";
 
 test.describe("navigation", () => {
   test("should navigate to Users page", async ({ page }) => {

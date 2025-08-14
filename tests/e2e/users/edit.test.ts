@@ -1,6 +1,6 @@
 import { expect, test } from "@playwright/test";
-import { UserPage } from "../pages/UserPage";
-import { CreateEditUserPage } from "../pages/CreateEditUserPage";
+import { UserPage } from "@pages/UserPage";
+import { CreateEditUserPage } from "@pages/CreateEditUserPage";
 
 test("should edit user", async ({ page }) => {
   const userPage = new UserPage(page);
@@ -16,6 +16,6 @@ test("should edit user", async ({ page }) => {
 
   await expect(userPage.heading).toBeVisible();
 
-  await expect(userPage.getRowByEmail(email)).not.toBeVisible();
+  await expect(userPage.getRowByEmail(email)).toBeHidden();
   await expect(userPage.getRowByEmail("edited@example.com")).toBeVisible();
 });

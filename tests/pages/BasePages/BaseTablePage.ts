@@ -1,15 +1,15 @@
-import { Locator, Page } from "@playwright/test";
+import { type Locator, type Page } from "@playwright/test";
 import { BasePage } from "./BasePage";
 import { SidebarMenu } from "./SidebarMenu";
 
-export class BaseTablePage extends BasePage {
+export abstract class BaseTablePage extends BasePage {
   readonly createBtn: Locator;
   readonly sidebar: SidebarMenu;
   readonly delBtn: Locator;
   readonly selectAllCheck: Locator;
   readonly emptyText: Locator;
 
-  constructor(page: Page, url: string) {
+  protected constructor(page: Page, url: string) {
     super(page, url);
     this.createBtn = this.page.getByRole("link", { name: "Create" });
     this.sidebar = new SidebarMenu(page);

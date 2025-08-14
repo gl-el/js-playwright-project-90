@@ -1,6 +1,6 @@
-import { Locator, Page } from "@playwright/test";
+import { type Locator, type Page } from "@playwright/test";
 import { BaseCreateEditPage } from "./BasePages";
-import { IUserProps } from "../types";
+import { type IUserProps } from "../types";
 
 export class CreateEditUserPage extends BaseCreateEditPage {
   readonly heading: Locator;

@@ -1,8 +1,8 @@
 import { expect, test } from "@playwright/test";
-import { UserPage } from "../pages/UserPage";
-import { CreateEditUserPage } from "../pages/CreateEditUserPage";
-import { NEW_USER } from "../testData/newUser";
-import { Menu } from "../enums";
+import { UserPage } from "@pages/UserPage";
+import { CreateEditUserPage } from "@pages/CreateEditUserPage";
+import { NEW_USER } from "tests/testData/newUser";
+import { Menu } from "tests/enums";
 
 test("should create a new user", async ({ page }) => {
   const userPage = new UserPage(page);

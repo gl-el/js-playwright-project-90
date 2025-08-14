@@ -1,8 +1,8 @@
 import { expect, test } from "@playwright/test";
-import { StatusesListPage } from "../pages/StatusesListPage";
-import { CreateEditStatusPage } from "../pages/CreateEditStatusPage";
-import { NEW_STATUS } from "../testData";
-import { Menu } from "../enums";
+import { StatusesListPage } from "@pages/StatusesListPage";
+import { CreateEditStatusPage } from "@pages/CreateEditStatusPage";
+import { NEW_STATUS } from "tests/testData";
+import { Menu } from "tests/enums";
 
 test("should create a new status", async ({ page }) => {
   const statusesListPage = new StatusesListPage(page);

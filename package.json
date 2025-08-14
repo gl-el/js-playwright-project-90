@@ -7,6 +7,7 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint ./src --ext .ts,.tsx --fix",
+    "lint:tests": "eslint ./tests --ext .ts --fix",
     "format": "prettier --write .",
     "preview": "vite preview"
   },
@@ -24,6 +25,7 @@
     "@vitejs/plugin-react": "^4.7.0",
     "eslint": "^9.32.0",
     "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-playwright": "^2.2.2",
     "eslint-plugin-prettier": "^5.5.4",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.20",

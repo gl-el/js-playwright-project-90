@@ -1,9 +1,9 @@
-import { Page } from "@playwright/test";
+import { type Page } from "@playwright/test";
 
-export class BasePage {
-  constructor(
-    protected readonly page: Page,
-    private readonly url: string
+export abstract class BasePage {
+  protected constructor(
+    readonly page: Page,
+    private url: string
   ) {}
 
   async goto() {

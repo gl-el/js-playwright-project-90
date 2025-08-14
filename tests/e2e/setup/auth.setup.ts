@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test";
-import { DashboardPage } from "../pages/DashboardPage";
-import { USER } from "../testData/user";
-import { LoginPage } from "../pages/LoginPage";
+import { DashboardPage } from "@pages/DashboardPage";
+import { LoginPage } from "@pages/LoginPage";
+import { USER } from "tests/testData/user";
 
 test("authenticate", async ({ page }) => {
   const loginPage = new LoginPage(page);

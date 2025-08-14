@@ -1,5 +1,5 @@
-import { Locator, Page } from "@playwright/test";
-import { IStatusProps } from "../types";
+import { type Locator, type Page } from "@playwright/test";
+import { type IStatusProps } from "../types";
 import { BaseCreateEditPage } from "./BasePages";
 
 export class CreateEditStatusPage extends BaseCreateEditPage {

@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test";
-import { LoginPage } from "../pages/LoginPage";
-import { DashboardPage } from "../pages/DashboardPage";
-import { USER } from "../testData/user";
+import { LoginPage } from "@pages/LoginPage";
+import { DashboardPage } from "@pages/DashboardPage";
+import { USER } from "tests/testData/user";
 
 test.describe("authorization", () => {
   test("should login", async ({ browser }) => {
@@ -29,7 +29,7 @@ test.describe("authorization", () => {
 
     await dashboardPage.logout();
 
-    await expect(dashboardPage.heading).not.toBeVisible();
+    await expect(dashboardPage.heading).toBeHidden();
 
     await expect(loginPage.loginInput).toBeVisible();
     await expect(loginPage.passInput).toBeVisible();
