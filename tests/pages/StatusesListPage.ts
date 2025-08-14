@@ -17,7 +17,7 @@ export class StatusesListPage extends BaseTablePage {
 
   getRowByName(name: string | null) {
     if (!name) {
-      throw new Error(`getRowByEmail: email is ${name}`);
+      throw new Error(`getRowByName: name is ${name}`);
     }
 
     return this.page.getByRole("row").filter({ has: this.page.getByRole("cell", { name }) });

@@ -20,11 +20,6 @@ export class CreateEditStatusPage extends BaseCreateEditPage {
     await this.saveBtn.click();
   }
 
-  async editStatus(name: string) {
-    await this.name.fill(name);
-    await this.saveBtn.click();
-  }
-
   async deleteStatus() {
     await this.delBtn.click();
   }
