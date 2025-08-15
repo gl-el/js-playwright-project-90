@@ -3,6 +3,7 @@ import { DashboardPage } from "@pages/DashboardPage";
 import { UserPage } from "@pages/UserPage";
 import { StatusesListPage } from "@pages/StatusesListPage";
 import { Menu } from "tests/enums";
+import { LabelsListPage } from "@pages/LabelsListPage.ts";
 
 test.describe("navigation", () => {
   test("should navigate to Users page", async ({ page }) => {
@@ -24,5 +25,16 @@ test.describe("navigation", () => {
     await dashboardPage.sidebar.clickMenu(Menu.STATUSES);
 
     await expect(statusesPage.heading).toBeVisible();
+  });
+
+  test("should navigate to Labels page", async ({ page }) => {
+    const dashboardPage = new DashboardPage(page);
+    const labelsPage = new LabelsListPage(page);
+
+    await dashboardPage.goto();
+    await dashboardPage.waitForLoad();
+    await dashboardPage.sidebar.clickMenu(Menu.LABELS);
+
+    await expect(labelsPage.heading).toBeVisible();
   });
 });
