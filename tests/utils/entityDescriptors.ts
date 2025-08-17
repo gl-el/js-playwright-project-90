@@ -9,6 +9,7 @@ import { UserPage } from "@pages/UserPage.ts";
 import { CreateEditUserPage } from "@pages/CreateEditUserPage.ts";
 import { BaseCreateEditPage, BaseTablePage } from "@pages/BasePages";
 import { createEditEntity } from "tests/utils/createEditEntity.ts";
+import { Menu } from "tests/enums.ts";
 
 export type LabelPayload = {
   name: string;
@@ -40,24 +41,24 @@ export type EntityDescriptor<
 };
 
 export type LabelDescriptor = EntityDescriptor<LabelsListPage, CreateEditLabelPage, LabelPayload> & {
-  key: "labels";
+  key: Menu.LABELS;
   identifier: "name";
 };
 
 export type StatusDescriptor = EntityDescriptor<StatusesListPage, CreateEditStatusPage, StatusPayload> & {
-  key: "statuses";
+  key: Menu.STATUSES;
   identifier: "name";
 };
 
 export type UserDescriptor = EntityDescriptor<UserPage, CreateEditUserPage, UserPayload> & {
-  key: "users";
+  key: Menu.USERS;
   identifier: "email";
 };
 
 export type AnyDescriptor = LabelDescriptor | StatusDescriptor | UserDescriptor;
 
 const labelBase: Omit<LabelDescriptor, "createEdit"> = {
-  key: "labels",
+  key: Menu.LABELS,
   listPageClass: LabelsListPage,
   editPageClass: CreateEditLabelPage,
   makePayload: (suf?: string) => makeLabel(suf),
@@ -68,7 +69,7 @@ const labelBase: Omit<LabelDescriptor, "createEdit"> = {
 };
 
 const statusBase: Omit<StatusDescriptor, "createEdit"> = {
-  key: "statuses",
+  key: Menu.STATUSES,
   listPageClass: StatusesListPage,
   editPageClass: CreateEditStatusPage,
   makePayload: (suf?: string) => makeStatus(suf),
@@ -79,7 +80,7 @@ const statusBase: Omit<StatusDescriptor, "createEdit"> = {
 };
 
 const userBase: Omit<UserDescriptor, "createEdit"> = {
-  key: "users",
+  key: Menu.USERS,
   listPageClass: UserPage,
   editPageClass: CreateEditUserPage,
   makePayload: (suf?: string) => makeUser(suf),
