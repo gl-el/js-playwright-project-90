@@ -1,6 +1,10 @@
 import { type Locator, type Page } from "@playwright/test";
-import { type IStatusProps } from "../types";
 import { BaseCreateEditPage } from "./BasePages";
+
+export interface IStatusProps {
+  name: string;
+  slug: string;
+}
 
 export class CreateEditStatusPage extends BaseCreateEditPage {
   readonly heading: Locator;
@@ -17,10 +21,6 @@ export class CreateEditStatusPage extends BaseCreateEditPage {
   async saveStatus({ name, slug }: IStatusProps) {
     await this.name.fill(name);
     await this.slug.fill(slug);
-    await this.saveBtn.click();
-  }
-
-  async deleteStatus() {
-    await this.delBtn.click();
+    await this.saveEntity();
   }
 }

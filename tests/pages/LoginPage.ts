@@ -13,7 +13,7 @@ export class LoginPage extends BasePage {
     this.signInBtn = this.page.getByRole("button", { name: "Sign in" });
   }
 
-  async login(username: string, password: string) {
+  async login({ username, password }: { username: string; password: string }) {
     await this.loginInput.fill(username);
     await this.passInput.fill(password);
     await this.signInBtn.click();

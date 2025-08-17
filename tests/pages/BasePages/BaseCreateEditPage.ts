@@ -15,4 +15,12 @@ export abstract class BaseCreateEditPage extends BasePage {
 
     this.sidebar = new SidebarMenu(page);
   }
+
+  async saveEntity() {
+    await this.saveBtn.click();
+  }
+
+  async deleteEntity() {
+    await this.delBtn.click();
+  }
 }

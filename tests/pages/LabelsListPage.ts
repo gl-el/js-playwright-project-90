@@ -13,12 +13,4 @@ export class LabelsListPage extends BaseTablePage {
     await this.createBtn.click();
     expect(this.page.url()).toContain("/create");
   }
-
-  getRowByName(name: string | null) {
-    if (!name) {
-      throw new Error(`getRowByName: name is ${name}`);
-    }
-
-    return this.page.getByRole("row").filter({ has: this.page.getByRole("cell", { name }) });
-  }
 }

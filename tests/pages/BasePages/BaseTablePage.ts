@@ -22,11 +22,26 @@ export abstract class BaseTablePage extends BasePage {
     return this.page.getByRole("rowgroup").nth(1).getByRole("row").nth(rowIndex).getByRole("cell").nth(cellIndex);
   }
 
+  getRowByName(name: string | null): Locator {
+    if (!name) {
+      throw new Error(`getRowByName: name is ${name}`);
+    }
+    return this.page.getByRole("row").filter({ has: this.page.getByRole("cell", { name }) });
+  }
+
+  getCheckboxForRow(name: string): Locator {
+    return this.getRowByName(name).getByRole("checkbox");
+  }
+
   async selectAll() {
     await this.selectAllCheck.check();
   }
 
   async deleteSelected() {
     await this.delBtn.click();
+  }
+
+  async clickCreateBtn() {
+    await this.createBtn.click();
   }
 }

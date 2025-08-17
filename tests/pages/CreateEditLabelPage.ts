@@ -13,10 +13,6 @@ export class CreateEditLabelPage extends BaseCreateEditPage {
 
   async saveLabel(name: string) {
     await this.name.fill(name);
-    await this.saveBtn.click();
-  }
-
-  async deleteStatus() {
-    await this.delBtn.click();
+    await this.saveEntity();
   }
 }

@@ -20,15 +20,11 @@ export class CreateEditUserPage extends BaseCreateEditPage {
     await this.email.fill(email);
     await this.name.fill(name);
     await this.surname.fill(surname);
-    await this.saveBtn.click();
+    await this.saveEntity();
   }
 
   async editEmail(email: string) {
     await this.email.fill(email);
-    await this.saveBtn.click();
-  }
-
-  async deleteUser() {
-    await this.delBtn.click();
+    await this.saveEntity();
   }
 }
